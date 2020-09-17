@@ -1,19 +1,19 @@
 ![thumbnail_image (1)](https://user-images.githubusercontent.com/71442999/93474414-99d97f80-f8f7-11ea-886e-e2f86af5a366.png)
 
-# Bra och mindre bra saker jag gjort i detta projekt:
-Bra saker: \
-All funktionalitet ska fungera: \
-Inloggning, registrering, köpfunktion, kontakta oss, produktfiltreringar etcetera.\
-Mindre bra saker: \
-Har ingen paketuppdelning alls i princip och massa onödiga dependencies lite överallt samt sett till cybersäkerhet så finns det en hel del brister. 
+# Good and bad things i did in this project:
+Good stuff: \
+All the functionality should be up to pair! : \
+Logins, registering, purchase-function, contact us, product-filtering etcetera.\
+Not so good stuff: \
+I have basically zery to none package structure and alot of unnecessary dependencies and as for cybersecurity there are alot of flaws.
 
-# i terminalen , kör :
+# in the terminal , enter :
 export STRIPE_PUBLISHABLE_KEY=pk_test_78pDkolg6t41w0AnhbMGZHA100La2mslRc \
 export STRIPE_SECRET_KEY=sk_test_15xXj4SyiGrtuWs6altppf4n00tK542kO3
 
-# Vid stripebetalning:
-Sätt systemvariablerna(environment variables) med:\
+# As for stripe-payment:
+Enter environment variables with:\
 source .env\
-Detta för att komma åt de säkert lagrade API-nycklarna\
-Använd kortuppgifter från:
+To get the secured API-keys\
+Use card-details for testing at:
 https://stripe.com/docs/testing#cards
