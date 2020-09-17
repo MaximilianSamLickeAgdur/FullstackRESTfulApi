@@ -1,3 +1,5 @@
+![thumbnail_image (1)](https://user-images.githubusercontent.com/71442999/93474414-99d97f80-f8f7-11ea-886e-e2f86af5a366.png)
+
 # Bra och mindre bra saker jag gjort i detta projekt:
 Bra saker: \
 All funktionalitet ska fungera: \
