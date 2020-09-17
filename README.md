@@ -1,7 +1,6 @@
-# Kandidatprojektet
-
-Kandidatprojekt
-
+i terminalen , kör :
+export STRIPE_PUBLISHABLE_KEY=pk_test_78pDkolg6t41w0AnhbMGZHA100La2mslRc
+export STRIPE_SECRET_KEY=sk_test_15xXj4SyiGrtuWs6altppf4n00tK542kO3
 
 # Vid stripebetalning:
 Sätt systemvariablerna(environment variables) med:\
