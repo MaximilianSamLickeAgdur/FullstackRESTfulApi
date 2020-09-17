@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content%}
+<div>
+    <form method="POST" class="form-signin">
+        <img class="mb-0" src="../static/Logo1.png" alt="" width="300" height="230" id="logga">
+        <legend class = "h3 mb-3 font-weight-normal">Återställ Lösenord</legend>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {% if form.password.errors %}
+            {{ form.password(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.password(class="form-control", placeholder="Lösenord") }}
+        {% endif %}
+        </div> 
+        <div class="form-group">
+            {% if form.confirm_password.errors %}
+            {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.confirm_password(class="form-control", placeholder="Bekräfta Lösenord") }}
+        {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+        </div> 
+    </form>
+</div>
+{% endblock %}

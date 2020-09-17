@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class = "col">
+
+    <form>
+       <div id = "konto-form", class ="form-group">
+       <legend style = "font-weight: bolder; font-size: 30px;"> Varukorg </legend>
+       <hr>
+       <div>
+           {% if cart_objects %}
+         <table class = "col-md-12", id="cart"> 
+           {%for furniture in cart_objects%}
+           
+           <tr class="description">
+             <td>
+               <a href = "{{ url_for('exploreid', id=furniture.id) }}">  
+                 <p class = "description" style= "margin-bottom: 0mm; font-size: 15px;" > {{furniture.name}}</p> 
+                   <img class="mb-0" src="{{url_for('static', filename='pics/' + furniture.image)}}" alt="" height="85" width="85">
+               </a>
+             </td>
+               <td class = "description" id="kundvagn_price">
+                   {{furniture.price}} kr
+               </td>
+               <td>
+                   <a class="btn btn-lg btn-primary btn-block" href="{{ url_for('removeObject', id=furniture.id) }}">
+                       Ta bort
+                   </a>
+               </td>
+              
+           </tr>
+
+           {%endfor%}
+         </table> 
+         <br><br>
+         Totalt: {{cart_objects | sum(attribute='price')}} kr
+         <br>
+       </div>
+       <a class="btn btn-lg btn-primary btn-block" href ="{{url_for('checkout')}}">Gå till kassa</a>
+        {% else %}
+
+         <p>Varukorgen är tom.</p>
+         <a class="btn btn-lg btn-primary btn-block" href ="{{url_for('explore')}}">Utforska möbler</a>
+
+         {% endif %}
+   </div>
+     </form>
+   
+   </div>
+   
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    function removeFromObject(id) {
+        let tempCart = JSON.parse(Cookies.get('cart'));
+        let cart = tempCart.filter(item => item.id !== id );
+        Cookies.set('cart', JSON.stringify(cart));
+        location.reload()
+    }
+</script>
+{% endblock scripts %}

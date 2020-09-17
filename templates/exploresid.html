@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+<div class= "col-sm-6" style="align-items: center;">
+    <img class="mb-0" src="{{url_for('static', filename='pics/' + furniture.image)}}"
+     width="500" height="500" id="product_image" style=" border-radius: 5%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+</div>
+
+<div class=col-lg-6 style="align-items: center;">
+<form class="form-signin" id = "product_container">
+
+    <legend class = "description" id="product_name"> {{furniture.name}} </legend>
+    <hr>
+    <table class = "col-md-12"> 
+        <tr class="description">
+            <td class = "description" id="product_price">
+                Pris: {{furniture.price}} kr
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr align = "left">
+            <td style =" padding-right: 10px;" id="product_description">
+                Beskrivning:
+            </td>
+            <td id="product_description_info">
+                  {{furniture.ldec}}    
+            </td>
+        </tr>
+        <tr align = "left">
+
+            <td id="product_description">
+                Skick:
+            </td>
+            <td id="product_description_info">
+                {% if furniture.state == 5%}
+                    Nyskick
+                {% elif furniture.state == 4%}
+                    Bra skick
+                {% elif furniture.state == 3%}
+                    Helt ok
+                {% elif furniture.state == 2%}
+                    Lite sliten   
+                {% elif furniture.state == 1%}
+                    Mycket sliten                   
+                {% endif %}
+            </td>
+        </tr>
+        <tr align = "left">
+            <td id="product_description">
+                Vikt:
+            </td>
+            <td id="product_description_info">
+                {{furniture.weight}} kg
+            </td>
+        </tr>
+        <tr align = "left">
+            <td id="product_description">
+                Mått:
+            </td>
+            <td id="product_description_info">
+                Längd: {{furniture.length}} cm, Bredd: {{furniture.width}} cm, Höjd: {{furniture.height}} cm
+            </td>
+        </tr>
+
+    </table>
+    <br>
+    {% if current_user.is_authenticated %}
+    <tr>
+        {% if furniture.user_id != user.id %}
+        <a href="#" id="myButton" onclick = "addToCart('{{ furniture.id }}')" class="btn btn-lg btn-primary btn-block">
+            <img src = "{{url_for('static', filename='pics/cart icon 2.png')}}" width="50" height="50" style = "filter:invert(100%)"> Lägg till i varukorg</a>
+        {% else %}
+        <a href = "#" id="myButton" onclick="removeFromObject('{{ furniture.id }}')" class="btn btn-lg btn-primary btn-block" style = "background-color:#c65740;">
+            <img src = "{{url_for('static', filename='pics/trash icon.png')}}" width="50" height="50" style = "filter:invert(100%)"> Ta bort</a>
+        {% endif %}
+    </tr>
+    {% else %}
+    <p><a class="btn btn-lg btn-primary btn-block" href="{{ url_for('login') }}">Logga in för att lägga i varukorg</a></p>
+    {% endif %}
+    <hr>
+    <legend class = "description" id="product_name"> Ställ en fråga</legend>
+    <fieldset class="form-group">
+        <div class="form-group">
+            <input type="name" class="form-control" id="name" placeholder="Namn">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="epost" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="select" , placeholder="Meddelande"></textarea>
+        </div>
+        
+        <a style="color: white;"class="btn btn-lg btn-primary btn-block" onclick="question()">Skicka</a>
+
+              <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tack för din fråga! Vi återkommer så fort som möjligt.</h5>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="form-group" id="submit">
+                        {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+                      </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+
+
+</form>
+</div>
+
+
+
+</body>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Varan har lagts till i din varukorg!</h5>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-lg btn-primary btn-block" href="{{ url_for('exploreid', id=furniture.id) }}">Ok</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Varan har tagits bort från din varukorg!</h5>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-lg btn-primary btn-block" style = "background-color:#c65740;" href="{{ url_for('exploreid', id=furniture.id) }}">Ok</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    function addToCart(id) {
+        $.ajax({
+        url: '/addToCart/' + id,
+        type: 'POST',
+        success:function(id) {
+            $("#addModal").modal('show');
+
+        }
+    })}
+
+    function removeFromObject(id) {
+        $.ajax({
+        url: '/removeFromObject/' + id,
+        type: 'POST',
+        success:function(id) {
+            $("#removeModal").modal('show');
+
+        }
+    })}
+
+    function question() {
+      $("#questionModal").modal('show');
+    }
+</script>
+
+{% endblock scripts %}

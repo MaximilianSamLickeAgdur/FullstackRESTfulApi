@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class = "container">
+<form method = "POST">
+ <div class ="form-group", id = "konto-form">
+    <legend style = "font-weight: bolder;"> Skicka in förfrågan om möbel </legend>
+
+    <hr>
+    <div style ="text-align: left;" class = "form-group">
+    <div class ="form-group">
+      {{form.category.label(class = "form-control-label", style = "font: bolder")}}
+      {{form.category(class ="form-control")}}
+    </div>
+    
+      <div class="form-group">
+        <label for ="picture">Välj bild</label>
+        <input id ="picture" type="file" class="form-control-file">
+      </div>
+
+      <div class="form-group">
+        <label>Ytterligare detaljer</label>
+        <textarea class="form-control" id="select" , placeholder="T.ex. har stått i ett hem med katter, varit utomhus eller liknande"></textarea>
+    </div>
+   
+    
+    <div class="form-check">
+      {{ form.transportHelp(class="form-check-input") }}
+      {{ form.transportHelp.label(class="form-check-label") }}
+  </div>
+
+  <div class="form-check">
+      {{ form.donation(class="form-check-input") }}
+      {{ form.donation.label(class="form-check-label") }}
+  </div>
+</div>
+<hr>
+  <div class = "form-group">
+    {{ form.skicka(class="btn btn-lg btn-primary btn-block") }}
+</div>     
+ </div>
+</form>
+</div>
+
+{% endblock content %}

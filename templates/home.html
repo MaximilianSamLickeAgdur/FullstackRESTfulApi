@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=header> 
+    <div class="row">
+    <div class=col-sm-12>
+        <h1 style="max-width: 100%;"><b id=hometext>LITHEmöbler</b></h1>
+    </div>
+    </div>  
+</div>
+<div class=container style="padding-top: 20px;">
+    <div class=row id=home>
+        <div class=col-sm-4 style="padding-bottom: 20px;">
+            <a href="{{url_for('contact')}}" class = home_sections>
+                <div class=card >
+                    <img src="{{url_for('static', filename='pics/community.png')}}" width="200" height="200">
+                    <h1>Om oss</h1>
+                </div>
+            </a>
+        </div>
+
+        <div class=col-sm-4 style="padding-bottom: 20px;">
+            <a href="{{url_for('explore')}}" class = home_sections>
+            <div class=card >
+                <img src="{{url_for('static', filename='pics/furns.jpg')}}" width="200" height="200">
+                <h1>Utforska möbler</h1>
+            </div>
+            </a>
+        </div>
+
+        <div class=col-sm-4 style="padding-bottom: 20px;">
+            <a href="{{url_for('profile')}}" class = home_sections>
+            <div class=card >
+                <img src="{{url_for('static', filename='pics/login.png')}}" width="200" height="200">
+                <h1>Ditt konto</h1>
+            </a>
+            </div>
+        </div>
+    </div>
+    <div class=row id=home>
+        <div class=col style="padding-bottom: 20px;">
+            <div class=card>
+                <div class=row>
+                    <div class=col>
+
+                        <p>"Mycket bra hemsida! Jag har inrett hela mitt vardagsrum med hjälp av LITHEmöbler"</p>
+                        <img src="{{url_for('static', filename='pics/5star.png')}}" width="200" height="40">
+                        <p>-Urban Andersson</p>
+
+                    </div>
+                    <div class=col>
+
+                        <p>"LITHEmöbler är väldigt bra när jag har gamla möbler jag vill bli av med, de sköter all fösäljning åt mig och så tjänar jag en hacka på det!"</p>
+                        <img src="{{url_for('static', filename='pics/4star.png')}}" width="200" height="40">
+                        <p>-Måns Pålsson</p>
+
+                    </div>
+                    <div class=col>
+
+                        <p>"Funkar bra, inga större problem att använda"</p>
+                        <img src="{{url_for('static', filename='pics/2star.png')}}" width="200" height="40">
+                        <p>-Patrik Von Grevé</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content%}

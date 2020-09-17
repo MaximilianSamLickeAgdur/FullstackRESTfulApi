@@ -1,0 +1,249 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class=row>
+<div class = col>
+<button onclick="toggleFilter()" id=filterButton class="btn btn-lg btn-primary btn-block">Filtrera</button>
+</div>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-2">
+
+    <div  class="sidenav" id="toggle">
+    <form id="mySidenav", method ="POST" >
+
+    <hr>
+
+    <legend class = "h3 mb-3 font-weight-normal">Kategori</legend>
+    
+            <div class="form-check">
+                {{ form.category1(class="form-check-input", id = "category") }}
+                {{ form.category1.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.category2(class="form-check-input", id = "category") }}
+                {{ form.category2.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.category3(class="form-check-input", id = "category") }}
+                {{ form.category3.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.category4(class="form-check-input", id = "category") }}
+                {{ form.category4.label(class="form-check-label") }}
+            </div>
+
+            <div class="form-check">
+                {{ form.category5(class="form-check-input", id = "category") }}
+                {{ form.category5.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.category6(class="form-check-input", id = "category") }}
+                {{ form.category6.label(class="form-check-label") }}
+            </div>
+            <hr>
+        <legend class = "h3 mb-3 font-weight-normal">Färg</legend>
+            <div class="form-check">
+                {{ form.color1(class="form-check-input", id = "color") }}
+                {{ form.color1.label(class="form-check-label") }}
+
+            </div>
+    
+            <div class="form-check">
+                {{ form.color2(class="form-check-input", id = "color") }}
+                {{ form.color2.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.color3(class="form-check-input", id = "color") }}
+                {{ form.color3.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.color4(class="form-check-input", id = "color") }}
+                {{ form.color4.label(class="form-check-label") }}
+            </div>  
+
+            <div class="form-check">
+                {{ form.color5(class="form-check-input", id = "color") }}
+                {{ form.color5.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.color6(class="form-check-input", id = "color") }}
+                {{ form.color6.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.color7(class="form-check-input", id = "color") }}
+                {{ form.color7.label(class="form-check-label") }}
+            </div>
+    
+            <div class="form-check">
+                {{ form.color8(class="form-check-input", id = "color") }}
+                {{ form.color8.label(class="form-check-label") }}
+            </div>   
+            <div class="form-check">
+                {{ form.color9(class="form-check-input", id = "color") }}
+                {{ form.color9.label(class="form-check-label") }}
+            </div>   
+            <hr>
+        <legend class = "h3 mb-3 font-weight-normal">Skick</legend>
+    
+        <div class="form-check">
+            {{ form.condition1(class="form-check-input", id ="condition") }}
+            {{ form.condition1.label(class="form-check-label") }}
+        </div>
+    
+        <div class="form-check">
+            {{ form.condition2(class="form-check-input", id ="condition") }}
+            {{ form.condition2.label(class="form-check-label") }}
+        </div>
+    
+        <div class="form-check">
+            {{ form.condition3(class="form-check-input", id ="condition") }}
+            {{ form.condition3.label(class="form-check-label") }}
+        </div>
+    
+        <div class="form-check">
+            {{ form.condition4(class="form-check-input", id ="condition") }}
+            {{ form.condition4.label(class="form-check-label") }}
+        </div>    
+    
+        <div class="form-check">
+            {{ form.condition5(class="form-check-input", id ="condition") }}
+            {{ form.condition5.label(class="form-check-label") }}
+        </div>    
+        <hr>
+        <legend class = "h3 mb-3 font-weight-normal">Pris</legend>
+
+        <div class = "form-group">
+           {{form.minprice(class = "form-control" , placeholder = "Min", id="min-price")}} 
+           {{form.maxprice(class = "form-control" , placeholder = "Max", id="max-price")}} 
+
+        </div>
+
+        <hr>
+    
+        <div class = "form-group" id = "sticky" >
+            {{ form.filtrera(class="btn btn-lg btn-primary btn-block", id="filter") }}
+        </div>
+    
+    </form> 
+    
+    
+
+
+    </div>
+
+    </div>
+
+
+    <div class = "col-sm-10"> 
+    
+    <div class="row mb-4"> 
+    {% if furniture %}
+    {% for x in furniture%}
+
+
+    <div class="col-sm-4" id=product_column>
+        <div class="card" id = "item" style="margin-bottom: 20px;">
+            <div class="addcartdiv">
+                <img src="{{url_for('static', filename='pics/' + x.image)}}" width="200" height="200">    
+                {% if current_user.is_authenticated %}            
+                {% if x.user_id != user.id%}
+                <input type = "image" class="cartbuttonoverlap btn btn-info" onclick = "addToCart('{{ x.id }}')" 
+                src="{{url_for('static', filename='pics/cart icon.png')}}" width="60" height="50"/>
+                {%else%}
+                <input type = "image" class="cartbuttonoverlap btn btn-info" onclick = "removeFromObject('{{ x.id }}')" 
+                src="{{url_for('static', filename='pics/trash icon.png')}}" width="60" height="50"/>
+                {% endif %}
+                {% endif %}
+                <h3>{{x.name}}</h3>
+             
+                <p>{{x.sdec}}</p>
+                <p class="price">{{x.price}} kr</p>
+                <p><a class="btn btn-lg btn-primary btn-block" href="{{ url_for('exploreid', id=x.id) }}">Mer information</a></p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+    </div>
+
+    <div class="modal fade" id="basketModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Varan har lagts till i din varukorg!</h5>
+        </div> 
+        <div class="modal-footer">
+            <a class="btn btn-lg btn-primary btn-block" href="{{ url_for('explore') }}">Ok</a>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Varan har tagits bort från din varukorg!</h5>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-lg btn-primary btn-block" style = "background-color:#c65740;" href="{{ url_for('explore') }}">Ok</a>
+        </div>
+    </div>
+    </div>
+    </div>  
+
+    {% else %}
+
+    <h3 id = "no_products">Det finns inga produkter som matchar din sökning</h3>
+
+    {% endif %}
+
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    function addToCart(id) {
+        $.ajax({
+        url: './addToCart/' + id,
+        type: 'POST',
+        success:function(id) {
+             $("#basketModal").modal('show');
+        }
+    })
+    }
+    function removeFromCart(id) {
+        $.ajax({
+        url: './removefromid/' + id,
+        type: 'POST',
+        success:function(id) {
+             $("#removeModal").modal('show');
+        }
+    })
+    }
+    function toggleFilter() {
+        var x = document.getElementById("toggle");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+         } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+
+{% endblock scripts %}

@@ -1,0 +1,428 @@
+
+html {
+  min-height: 1000px;
+  position: relative;
+}
+
+.row {
+  width: 100%;
+}
+
+#home{
+  width: auto;
+}
+
+.col-sm{
+  padding: 10px;
+}
+
+body {
+  min-height: 1000px;
+  background-color: rgb(202, 202, 207);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-top: 5rem;
+
+}
+
+ #infopage {
+  margin-left: 30px;
+  border-radius: 10px;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+
+#konto-form {
+  background-color: #ffffff;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+  padding: 30px;
+  opacity: 0.9;
+  margin-left: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+#update-form {
+  background-color: #ffffff;
+  max-width: 400px;
+  max-height: 600px;
+  align-items: center;
+  border-radius: 10px;
+  padding: 30px;
+  opacity: 0.9;
+  margin-left: 38%;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+#update-form legend {
+  text-align: center;
+}
+
+.form-signin {
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  width: 350px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color:#ffffffc4;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.sidenav {
+  height:100%;
+  width: 15%;
+  padding-bottom: 40px;
+  position: fixed;
+  z-index: 1;
+  top: 55px;
+  left: 0;
+  text-align: left;
+  background-color: #ececec;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  display: block;
+}
+.sidenav legend {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#mySidenav div{
+  margin-left: 20px;
+}
+
+.sidenav p {
+ margin-left: 20px;
+ size: 12px;
+}
+
+.header {
+  padding: 80px;
+  text-align: center;
+  background: url("pics/home.jpg") no-repeat center center;
+  height: auto;
+  max-width: 100%;
+}
+
+.header b {
+  color: black;
+  margin: auto;
+  width: 400px;
+  max-width: 10%;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#no_products {
+padding: 200px;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.col-4 {
+  padding: 10px;
+}
+
+#uppgifter {
+  padding-left: 40px;
+  text-align: left;
+}
+
+.price {
+  color: grey;
+  font-size: 15px;
+}
+
+form  {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card img {
+  align-self: center;
+}
+
+.home_sections:hover {
+  text-decoration-color: #334b69;
+}
+
+#product_image {
+  float:left;
+  margin-top: 20px;
+  margin-left: 100px;
+  align-self: center;
+}
+
+#product_name {
+  font-size: 1cm;
+  font-weight: 300;
+}
+
+#add_product {
+  font-weight: lighter;
+  font-size: 1cm;
+  padding: 5px 5px;
+  font-size: 20px;
+  display: block;
+  margin: 6mm;
+}
+
+#product_description {
+vertical-align: top;
+font-size: 5.5mm;
+}
+
+#product_description_info {
+  vertical-align:center;
+  font-size: 4.75mm;
+}
+.description {
+  color: #000;
+  font-weight: lighter;
+  line-height: 1.5cm;
+  border-spacing: 10px;
+}
+
+#product_container {
+  float: left;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  align-self: center;
+  margin-top: 20px;
+}
+
+#product_price {
+  font-size: 7mm;
+  text-align: left;
+  width: 30%;
+}
+
+#price_row {
+  size: 50%;
+}
+
+#sticky {
+  position: sticky;
+  bottom: 0;
+  height: 80px;
+  background-color:  #ececec ;
+  margin: auto;
+}
+
+#kundvagn_price {
+  font-size: 5mm;
+  text-align: left;
+  width: 30%;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn.btn-lg.btn-primary.btn-block {
+    background-color: #334b69;
+    border-color:  #334b69;
+    border:none;
+}
+
+.btn.btn-lg.btn-primary.btn-block:hover {
+	background-color: #506077;
+  border:none;
+}
+
+#contactcard{
+  height: 750px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+#contactcard p {
+ text-align: left;
+}
+#contactcard #select {
+  height:294px;
+  max-height: 294px;
+ }
+
+.addcartdiv{
+    position:relative;
+  }
+.addcartdivoverlap{
+    position: relative;
+      
+  }
+  .cartbuttonoverlap{
+    position: absolute;
+    z-index: 2;
+    bottom: 70px;
+    display: none;
+    right: 0px;	
+    background-color: white;
+    border-color: white;
+    border:none;
+  }
+
+  .addcartdiv:hover .cartbuttonoverlap{ 
+    display:block;
+    background-color: white;
+    border-color: white;
+    border:none;
+  }
+
+  #filterButton{
+    display: none;
+  }
+
+#delete_product {
+  border-style: dotted;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+  }
+  
+  .bg-steel {
+    background-color: #334b69;
+  }
+
+  .site-header {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+
+  #cart tr {
+    border-bottom-style: solid;
+  }
+
+  #hometext{
+    font-size: 60px;
+  }
+
+  /* Kod nedanför är för responsivitet på mobilskärm */
+  @media screen and (max-width: 800px) {
+    #product_container {
+      margin-left: 15px;
+    }
+    #product_image {
+      margin-left: 15px;
+      max-width: 100%;
+      height: auto;
+    }
+    #hometext{
+      font-size: 10vw;
+    }
+    .sidenav {
+      height:100%;
+      width: 100%;
+      padding-bottom: 40px;
+      position: fixed;
+      z-index: 1;
+      top: 55px;
+      left: 0;
+      text-align: left;
+      background-color: #ececec;
+      overflow-x: hidden;
+      overflow-y: auto;
+      transition: 0.5s;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+      display: none;
+    }
+
+    #filterButton{
+      display: block;
+      widows: 100%;
+      margin-left: 15px;
+      margin-bottom: 20px;
+    }
+  
+    #product_column{
+      width: 100%;
+      padding-right: 0;
+      margin-left: 45px;
+    }
+
+    #contactcard{
+      margin-bottom: 20px;
+      height: max-content;
+    }
+
+    #infopage{
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+
+    #konto-form{
+      width: 100%;
+      margin-left: 15px;
+    }
+
+    #update-form{
+      margin-left: 0px;
+    }
+
+    #no_products {
+      margin-left: 80px;
+      padding: 20px;
+      max-width: 100%;
+    }
+    #kundvagn_price{
+      max-width: 100%;
+      font-size: 4vw;
+    }
+  }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+ */
+
+=======
+>>>>>>> origin/anvtest
+>>>>>>> Sam

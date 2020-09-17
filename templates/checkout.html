@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+   
+   <div class=container>
+    <div class=card>
+    <h1 align-self=center>Kassa</h1>
+    <hr>
+    <h3>Du försöker köpa dessa varor</h3>
+      {% if cart_objects %}
+    <table class = "col-md-12", id="cart"> 
+      {%for furniture in cart_objects%}
+      
+      <tr class="description">
+        <td>
+          <a href = "{{ url_for('exploreid', id=furniture.id) }}">  
+            <p class = "description" style= "margin-bottom: 0mm; font-size: 15px;" > {{furniture.name}}</p> 
+              <img class="mb-0" src="{{url_for('static', filename='pics/' + furniture.image)}}" alt="" height="85" width="85">
+          </a>
+        </td>
+          <td class = "description" id="kundvagn_price">
+              {{furniture.price}} kr
+          </td>
+          </tr>
+
+      {%endfor%}
+    </table> 
+    <br><br>
+    Totalt: {{cart_objects | sum(attribute='price')}} kr
+    <br>
+
+  </div>
+  {% endif %} 
+
+     <!-- Betal pop-upen -->
+     <form action="/charge" method="post">
+      <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="{{ key }}"
+        data-amount="{{ amount }}"  
+        data-currency="sek"
+        data-locale="auto">
+      </script>
+    </form>
+
+</div>
+
+{% endblock content %}

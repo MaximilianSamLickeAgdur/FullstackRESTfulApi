@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id ="infopage">
+ 
+  <div class="row">
+    <div class="col">
+      <div style = "padding: 20px; " class="card"  id="contactcard">
+        <img class="mb-0" src="{{url_for('static', filename='pics/Logo1.png')}}" alt="" width="200" height="200" min-height="200" id="DJUR">
+        <h1>Om oss</h1>
+
+        <hr>
+   
+        <p>
+          LITHEmöbler är en secondhand e-butik där studenter kan sälja och köpa begagnade möbler och på så sätt bidra
+          till en tjockare plånbok och ett tjockare ozonlager.  
+        </p>
+
+        <br>
+
+        <p>
+          Vår tjänst funkar på så sätt att du som har en möbel du vill bli av med kan skicka in en säljförfrågan till oss.
+          Då kan du även välja att få upphämtning av möbeln så att du slipper transportera den till vårt lager. Sedan gör 
+          vi en besiktning av möbeln och sköter resten av säljprocessen åt dig, när möbeln är såld så får du pengarna på kontot.
+        </p>
+
+        <br>
+
+        <p>
+          För de som är intresserade av att köpa möbler kan man utforska vårt utbud på hemsidan och snabbt och smidigt ta dig igenom 
+          betalning. Vi kan även tillhandahålla utkörning av möbler hem till dig.
+        </p>
+
+        <br>
+      </div>
+      </div>
+        <div class="col">
+          <div style = "padding: 20px;" class="card" id="contactcard">
+            <h1>Kontakta oss</h1>
+
+            <hr>
+
+            <p>Har du en fundering, ett förslag till förbättring eller bara en generell fråga om vår tjänst? Isåfall är det bara 
+              att skicka den här så återkommer vi på den mailadress du angivit i formuläret.
+            </p>
+
+            <br>
+            <form>
+            <fieldset class="form-group">
+              <div class="form-group">
+                  <input type="name" class="form-control" id="name" placeholder="Namn">
+              </div>
+              
+
+              <div class="form-group">
+                  <input type="email" class="form-control" id="epost" placeholder="Email">
+              </div>
+          
+              <div class="form-group">
+                  <textarea class="form-control" id="select" , placeholder="Meddelande"></textarea>
+              </div>
+
+              <a style="color: white;"class="btn btn-lg btn-primary btn-block" onclick="question()">Skicka</a>
+
+              <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tack för din fråga! Vi återkommer så fort som möjligt.</h5>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="form-group" id="submit">
+                        {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+                      </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+            
+              
+            </fieldset>
+            </form>
+           
+          </div>
+        </div> 
+      </div>
+</div>
+
+
+
+{% endblock content%}
+
+{% block scripts %}
+<script>
+    function question() {
+      $("#questionModal").modal('show');
+    }
+</script>
+
+{% endblock scripts %}

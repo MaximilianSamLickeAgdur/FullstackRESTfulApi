@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        <div class = form-group, id = "update-form">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend>Ändra uppgifter</legend>
+            <hr>
+            <div class="form-group">
+                {{ form.name.label(class ="form-control-label")  }}
+                {% if form.name.errors %}
+                    {{ form.name(class="is-invaldid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors%}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class ="form-control")  }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label }}
+                {% if form.email.errors %}
+                    {{ form.email(class="is-invaldid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors%}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class ="form-control")  }}
+                {% endif %}  
+            </div>
+            <div class="form-group">
+                {{ form.address.label }}
+                {% if form.address.errors %}
+                    {{ form.address(class="is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.address.errors%}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.address(class = "form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.postalCode.label(class = "form-control-label") }}
+                {% if form.postalCode.errors %}
+                    {{ form.postalCode(class="is-invalid")}}
+                    <div class="form-control">
+                        {% for error in form.postalCode.errors%}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.postalCode(class ="form-control") }}
+                {% endif %}
+            </div>         
+        </fieldset>
+        <hr>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+        </div>
+        <div style = "text-align: center;">
+            <small>
+                Vill du uppdatera ditt lösenord? <a href=""> Uppdatera </a> <!--where do we link to??-->
+            </small>
+        </div>
+    </div>
+    
+    </form>
+</div>
+
+{% endblock content %}

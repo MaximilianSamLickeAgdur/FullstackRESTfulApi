@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 style = "text-align: center; color: #3f5645; background-color:rgb(209, 235, 187)">Din betalning godkändes. </h2>
+<div class = "container">
+  <script>
+    function clearCart(id) {
+        let cart = []
+        Cookies.set('cart', JSON.stringify(cart));
+    }
+    clearCart();
+</script>
+<br>
+   
+<div id ="konto-form">
+   <p>Tack för ditt köp {{current_user.name }}! Du kommer få ett mail av LITHEmöbler med information om hämtning alternativt leverans av dina köpta möbler. Har du några andra frågor är det bara att höra av sig via vårt kontaktformulär. Ha en bra dag!</p>
+  <hr>
+   <legend>Du köpte dessa varor:</legend>
+   <hr>
+   <table class = "col-md-12", id="cart"> 
+   
+     {%for x in furniture%}
+     
+     <tr class="description">
+       <td>
+           <p class = "description" style= "margin-bottom: 0mm; font-size: 15px;" > {{x.name}}</p> 
+             <img class="mb-0" src="{{url_for('static', filename='pics/' + x.image)}}" alt="" height="85" width="85">
+       </td>
+         <td class = "description" id="kundvagn_price">
+             {{x.price}} kr
+         </td>
+        </tr>
+     {%endfor%}
+   </table> 
+   <br>
+    Totalt: {{furniture | sum(attribute='price')}} kr
+    <br><br>
+   
+    
+     <a class="btn btn-lg btn-primary btn-block" href ="{{url_for('explore')}}">Utforska fler möbler</a>
+   </div>
+</div>
+{% endblock content %}

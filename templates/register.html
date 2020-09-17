@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content%}
+        <form method="POST" class="form-signin">
+            <img class="mb-0" src="../static/pics/Logo1.png" alt="" width="250" height="250" id="logga_legend">
+            <hr>
+            <legend class = "h3 mb-3 font-weight-normal">Registrera konto</legend>
+
+
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.name(class="form-control", placeholder="Namn") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.email(class="form-control", placeholder="Email") }}
+                    {% endif %}  
+                </div>
+                <div class="form-group">
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.password(class="form-control", placeholder="Lösenord") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.confirm_password(class="form-control", placeholder="Bekräfta lösenord") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if form.address.errors %}
+                        {{ form.address(class="is-invaldid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.address.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.address(class="form-control", placeholder="Adress") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if form.postalCode.errors %}
+                        {{ form.postalCode(class="is-invaldid")}}
+                        <div class="invalid-feedback">
+                            {% for error in form.postalCode.errors%}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    {{ form.postalCode(class="form-control", placeholder="Postkod") }}
+                    {% endif %}
+                </div>         
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+            </div>
+            <div>
+                <hr>
+                <small>
+                    Är du redan registrerad? <a href="{{ url_for('login') }}"> Logga in </a> 
+                </small>
+            </div>
+        </form>
+    </div>
+    
+{% endblock %}

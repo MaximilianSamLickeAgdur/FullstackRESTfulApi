@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class ="row">
+<div class = "col">
+
+  <form>
+      <div class = "form-group", id ="konto-form">
+        
+
+          <legend style = "font-weight: bolder;"> Mina Uppgifter </legend>
+          <hr>
+
+          <div class= form-group, id = "uppgifter">
+          
+          <h4> Namn: </h4> <p>{{ current_user.name }}</p>
+
+          <h4> Emailadress: </h4> <p>{{ current_user.email }}</p>
+
+          <h4> Address: </h4> <p>{{ current_user.address }} </p>
+
+          <h4> Postkod: </h4> <p>{{ current_user.postalCode }}</p>
+
+    </div>
+    <hr>
+          <a class ="btn btn-lg btn-primary btn-block" href = "{{url_for('updateprofile')}}">Uppdatera uppgifter</a> 
+       
+    
+</div>
+  </form>
+
+</div>
+
+
+<div class = "col">
+    <form>
+        <div class ="form-group", id = "konto-form">
+      
+     <legend style = "font-weight: bolder;"> Mina Säljförfrågningar</legend>
+     <hr> 
+       
+        {% for x in current_user.requests%}
+        <div>
+        <br>
+        <div style ="font-weight: bold; font-size:larger">
+        <p>Säljförfrågan skickad: {{x.day}} / {{x.month}} - {{x.year}} </p>
+        
+        </div>
+        <div style ="text-align:left;">
+        <p>Möbelkategori: {{x.category}}</p>
+        {% if x.transport %}
+         <p>Hämtning: Ja</p>
+         {% else %}
+         <p>Hämtning: Nej</p>
+         {% endif %}
+         {% if x.donation %}
+         <p>Detta är en donation.</p>
+         {% endif %}
+         <p style="font-size: larger; font-weight: bold;">Status:</p>
+         {% if x.approved %}
+         
+         <p style = "color: rgb(77, 131, 23);">Godkänd</p>
+
+        {% else %}
+
+        <p style = "color: rgb(131, 23, 23);">Under granskning</p>
+        {% endif %}
+        </div>
+
+        <hr>
+        
+    </div>
+       {% endfor %}
+
+    </div>
+    </form>
+
+</div>
+
+
+</div>
+
+
+{% endblock content%}

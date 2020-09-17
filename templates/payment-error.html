@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 style = "color: #6d1c04; background-color:rgb(235, 190, 187); text-align: center;">Din betalning nekades. </h2>
+<br><br><br>
+<a class="btn btn-lg btn-primary btn-block" href ="{{url_for('checkout')}}">Försök igen</a>
+
+{% endblock %}
