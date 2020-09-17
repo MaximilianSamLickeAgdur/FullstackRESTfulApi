@@ -2,7 +2,7 @@
 
 # Good and bad things i did in this project:
 Good stuff: \
-All the functionality should be up to pair! : \
+All the functionality should be up to par! : \
 Logins, registering, purchase-function, contact us, product-filtering etcetera.\
 Not so good stuff: \
 I have basically zery to none package structure and alot of unnecessary dependencies and as for cybersecurity there are alot of flaws.
