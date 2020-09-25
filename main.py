@@ -62,6 +62,10 @@ stripe_keys = {
             }
 stripe.api_key= stripe_keys["secret_key"]
 
+"""
+FUNCTION BELOW WILL BE MADE INTO A STANDARD SQLquery WITH THE PYTHON CONNECTOR , updates will be made next week (2020-09-28 - onforward)
+
+"""
 @login_manager.user_loader
 def load_user(user_id):
     """Loading user based on passed on id
@@ -74,7 +78,10 @@ def load_user(user_id):
     """
     return User.query.get(int(user_id))
 
+"""
+the class BELOW WILL BE CHANGED INTO STANDARD SQLCODE WORKING AGAINST THE mySQL RDBM WITH THE PYTHON CONNECTOR , updates will be made next week (2020-09-28 - onforward)
 
+"""
 class User(db.Model, UserMixin):
     """ Used for maintaining users - cart_objects have a 1-2-many relationship
         
@@ -135,7 +142,10 @@ class User(db.Model, UserMixin):
                     postalCode = self.postalCode)
 
 
+"""
+the class BELOW WILL BE CHANGED INTO STANDARD SQLCODE WORKING AGAINST THE mySQL RDBM WITH THE PYTHON CONNECTOR , updates will be made next week (2020-09-28 - onforward)
 
+"""
 
 class Furniture(db.Model):
     """Used for maintaining Furniture-objects in our db, 
@@ -191,7 +201,11 @@ class Request(db.Model):
     day = db.Column(db.String, nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
    
-def get_Furniture(id): 
+"""
+the function BELOW WILL BE CHANGED INTO STANDARD SQLCODE WORKING AGAINST THE mySQL RDBM WITH THE PYTHON CONNECTOR , updates will be made next week (2020-09-28 - onforward)
+right now we are querying the whole database... next update should be a well done selective query!
+"""
+  def get_Furniture(id): 
     """Helpfunction for functions removeObject,addToCart, exploreid
        
        Parameters:
@@ -208,7 +222,7 @@ def get_Furniture(id):
 def home():
     return render_template("home.html")
 
-
+""" changes will be made here aswell"""
 @app.route('/checkout')
 def checkout():
     """Calculates bought furnitures total price in 1/10 kr and renders checkout
@@ -226,6 +240,9 @@ def checkout():
                             key = stripe_keys["publishable_key"], 
                             amount = amount , cart_objects = furnitures)
 
+"""
+once again i am querying the whole database... 
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
 
 @app.route('/charge', methods=['POST'])
 def charge():
@@ -264,7 +281,10 @@ def charge():
         db.session.commit()
     return render_template('charge.html', amount=amount, furniture = boughtFurns)
 
-
+"""
+once again i am querying the whole database... 
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
+  
 @app.route('/explore', methods=['GET', 'POST']) 
 def explore():
     """Rendering Explore-route with or without filter
@@ -350,7 +370,8 @@ def addToCart(id):
     db.session.commit()
     return redirect(url_for('explore'))
 
-
+"""
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
 @app.route('/explore/<int:id>', methods=['GET'])
 def exploreid(id):
     """Rendering exploreid for furniture requested with id
@@ -368,7 +389,8 @@ def exploreid(id):
                             form = form, furniture = furniture,
                             user=current_user)
 
-
+"""
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
 @app.route('/cart') 
 @login_required
 def cart():
@@ -397,7 +419,8 @@ def contact():
         flash(f'Tack för din fråga, vi återkommer så fort vi vi kan!', 'success')
     return render_template("contact.html", form=form)
  
-
+"""
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
 @app.route('/register', methods=['GET','POST'])
 def register():
     """Registering user if not already authenticated
@@ -431,7 +454,9 @@ def register():
     return render_template("register.html", 
                             title = 'Registrera dig', form = form)
 
-
+"""
+fix the filter by to standard sql..
+changes will be made here aswell, all to get it into standard SQL code using the python connector and of course fixing the selects"""
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Logging in user if not authenticated
@@ -640,6 +665,8 @@ def registration():
     form = RegistrationForm()
     return render_template("registration.html", form = form)
 
+"""
+changes will be made here aswell, all to get it into standard SQL code using the python connector"""
 
 @app.cli.command('resetDB')
 def resetDB():
