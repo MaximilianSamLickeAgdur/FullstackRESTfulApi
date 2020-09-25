@@ -3,7 +3,7 @@
 # Good and bad things i did in this project:
 Not so good stuff: \
 Querying the whole database all the time, of course you dont want to do this, you want to make selective querys querying as little data as possible.\
-This was due to the teamlead explicitly telling us to do it that way because some teammembers did not have SQL language experience, makes no sence butbut.\
+This was due to the teamlead explicitly telling us to do it that way because some teammembers did not have SQL language experience, next week i will start to change the whole backend trying to use welldone sqlqueries, learning by doing as they say! probably(i hope) it will result in a more readable backend and less lines of code and less spaceconsumption(win-win-win).\
 I have basically zery to none package structure and alot of unnecessary dependencies and as for cybersecurity there are alot of flaws.\
 Good stuff: \
 All the functionality should be up to par! : \
